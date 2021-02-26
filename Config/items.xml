@@ -887,6 +887,43 @@
             </effect_group>
         </item>
 
+
+        <item name="apparelCigarOGKush">
+            <property name="Tags" value="head,clothing,noMods" />
+            <property name="DescriptionKey" value="apparelCigarOGKushDesc" />
+            <property name="DisplayType" value="clothingCigar" />
+            <property name="CustomIcon" value="apparelCigar" />
+            <property name="CustomIconTint" value="008000" />        
+            <property name="UnlockedBy" value="perkUrbanCombatCigar" />
+            <property name="Material" value="Mplants" />
+            <property name="Stacknumber" value="1" />
+            <property name="DegradationBreaksAfter" value="false" />
+            <property name="FuelValue" value="3" />
+            <property name="EconomicValue" value="500" />
+            <property name="HoldType" value="45" />
+            <property name="Meshfile" value="#Other/Items?Misc/sackPrefab.prefab" />
+            <property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab" />
+            <property name="Group" value="Clothing" />
+            <property name="EquipSlot" value="Face" />
+            <property class="UMA">
+                <property name="Mesh" value="gear_cigar" />
+                <property name="Overlay0" value="gear_cigar" />
+                <property name="Overlay0Tint" value="0,128,0" />
+                <property name="Layer" value="1" />
+                <property name="UISlot" value="Face" />
+            </property>
+            <effect_group tiered="false">
+                <passive_effect name="ModSlots" operation="base_set" value="0" />
+                <passive_effect name="AttributeLevel" tags="attPerception" operation="base_add" value="9" />
+                <passive_effect name="AttributeLevel" tags="attStrength" operation="base_add" value="9" />
+                <passive_effect name="AttributeLevel" tags="attFortitude" operation="base_add" value="9" />
+                <passive_effect name="AttributeLevel" tags="attAgility" operation="base_add" value="9" />
+                <passive_effect name="AttributeLevel" tags="attIntellect" operation="base_add" value="9" />
+                <passive_effect name="BarteringBuying" operation="base_add" value=".1" />
+                <passive_effect name="BarteringSelling" operation="base_add" value=".1" />
+            </effect_group>
+        </item>
+        
         <!--===============================Vehicles===============================-->
 
         <item name="HellHound4x4">

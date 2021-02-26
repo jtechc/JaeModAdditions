@@ -34,3 +34,5 @@ drugOhShitzDropsDesc,items,Medical,,,Be prepared for those Oh Shitz moments! Gre
 prgNeutronProjector,items,Item,,,"Neutron Projector",,,,,
 jaeDecoVendingMachine,blocks,block,,,"Deco Vending Machine",,,,,
 jaeDecoVendingMachineDesc,blocks,block,,,"Buy and Sell decoration items here!",,,,,
+apparelCigarOGKush,items,Clothes,,,"[008000]OG Kush",,,,,
+apparelCigarOGKushDesc,items,Clothes,,,"[008000]Smoke Weed Every Day\n\nTYSM Snoop Dogg",,,,,
