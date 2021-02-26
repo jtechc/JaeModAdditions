@@ -1,0 +1,91 @@
+<configs>
+
+    <append xpath="/traders/trader_item_groups">
+
+		<trader_item_group name="jaeDecoBenchClothing">
+			<item name="apparelShades" count="10" /> <!-- 5 -->
+			<item name="apparelSkiGoggles" count="10" /> <!-- 5 -->
+			<item name="apparelFacialPiercings" count="10" /> <!-- 5 -->
+			<item name="apparelGothBoots" count="10" /> <!-- 10 -->
+			<item name="apparelGothPants" count="10" /> <!-- 10 -->
+			<item name="apparelSuitPants" count="10" /> <!-- 5 -->
+			<item name="apparelSuitJacket" count="10" /> <!-- 5 -->
+			<item name="armorFootballHelmetZU" count="10" /> <!-- 5 -->
+            <item name="apparelTShirtZU" count="10" /> <!-- 5 -->
+		</trader_item_group>
+
+        <trader_item_group name="jaeDecoBenchKitchen">
+            <item name="cntStoveOldVer1Closed" count="10" /> <!-- 5 -->
+			<item name="cntBathTubEmpty" count="10" /> <!-- 5 -->
+			<item name="cntFridgeStainlessSteel" count="10" /> <!-- 5 -->
+			<item name="emberPileDeco2" count="10" /> <!-- 10 -->
+			<item name="palletWhiteBagsBase" count="10" /> <!-- 10 -->
+			<item name="palletBricksBase" count="10" /> <!-- 5 -->
+			<item name="palletBricksPartial1" count="10" /> <!-- 5 -->
+			<item name="barStool" count="10" /> <!-- 5 -->
+            <item name="signExitLight" count="10" /> <!-- 5 -->
+            <item name="cntToilet02" count="10" /> <!-- 5 -->
+			<item name="signShopOpen" count="10" /> <!-- 5 -->
+			<item name="ceilingFanLight" count="10" /> <!-- 5 -->
+			<item name="barracksChair" count="10" /> <!-- 10 -->
+			<item name="cntGasGrillClosed" count="10" /> <!-- 10 -->
+			<item name="houseFrontDoor1_v1" count="10" /> <!-- 5 -->
+			<item name="houseFrontDoor2_v1" count="10" /> <!-- 5 -->
+        </trader_item_group>
+
+        <trader_item_group name="jaeDecoBenchOther">
+            <item name="wallTorchLight" count="10" /> <!-- 5 -->
+			<item name="cntGraniteSink" count="10" /> <!-- 5 -->
+			<item name="cntLaundryBasketVer1Empty" count="10" /> <!-- 5 -->
+			<item name="decoMetalSlide" count="10" /> <!-- 10 -->
+			<item name="decoSwingSet" count="10" /> <!-- 10 -->
+			<item name="decoTreadmill" count="10" /> <!-- 5 -->
+			<item name="streetLightClassic" count="10" /> <!-- 5 -->
+			<item name="decoWeightBar" count="10" /> <!-- 5 -->
+            <item name="streetLight01" count="10" /> <!-- 5 -->
+            <item name="decoBenchPress" count="10" /> <!-- 5 -->
+			<item name="scrapIronLogSpike4" count="10" /> <!-- 5 -->
+			<item name="tableLampLight" count="10" /> <!-- 5 -->
+			<item name="signRoadStop" count="10" /> <!-- 10 -->
+			<item name="burningBarrel" count="10" /> <!-- 10 -->
+			<item name="controlPanelTop02" count="10" /> <!-- 5 -->
+			<item name="controlPanelBase04" count="10" /> <!-- 5 -->
+			<item name="woodCrown" count="10" /> <!-- 5 -->
+            <item name="woodCrownInsideCorner" count="10" /> <!-- 5 -->
+            <item name="paintingBen" count="10" /> <!-- 5 -->
+			<item name="cntMicrowaveOvenVer1Closed" count="10" /> <!-- 5 -->
+			<item name="cntWashingMachine" count="10" /> <!-- 5 -->
+			<item name="paintingDerek" count="10" /> <!-- 10 -->
+			<item name="wallHungSink" count="10" /> <!-- 10 -->
+			<item name="paintingNoah" count="10" /> <!-- 5 -->
+			<item name="cntDumpster" count="10" /> <!-- 5 -->
+			<item name="paintingDuke" count="10" /> <!-- 5 -->
+            <item name="cntGasPump" count="10" /> <!-- 5 -->
+            <item name="paintingKen" count="10" /> <!-- 5 -->
+			<item name="cntMedicineCabinetClosed" count="10" /> <!-- 5 -->
+			<item name="cntRetroFridgeVer1Closed" count="10" /> <!-- 5 -->
+			<item name="treeAzalea" count="10" /> <!-- 10 -->
+			<item name="stalagmite01" count="10" /> <!-- 10 -->
+			<item name="stalagmite02" count="10" /> <!-- 5 -->
+			<item name="stalagmite03" count="10" /> <!-- 5 -->
+			<item name="stalagmite04" count="10" /> <!-- 5 -->
+            <item name="terrIce" count="10" /> <!-- 5 -->
+
+        </trader_item_group>
+
+    </append>
+
+    <append xpath="/traders">
+        
+	<trader_info id="9" full_reset="true" reset_interval="1" override_buy_markup="1.0" allow_sell="false" min_inventory="30" max_inventory="70" min_items_swapped="20" max_items_swapped="20">
+        <trader_items count="all">
+            <item group="jaeDecoBenchClothing" />
+            <item group="jaeDecoBenchKitchen" />
+            <item group="jaeDecoBenchOther" />
+
+        </trader_items>
+    </trader_info>
+    
+    </append>
+
+</configs>

@@ -1,0 +1,30 @@
+<configs>
+
+    <append xpath="/recipes">
+
+        <recipe name="jaeSpeedDigger" count="1" craft_area="VIP_Workstation">
+            <ingredient name="jaeLifetimeComponent" count="1" />
+        </recipe>
+
+        <recipe name="Augur Chainsaw Silencer" Count="1" craft_time="300" craft_area="Weapon Station">
+            <ingredient name="modGunSoundSuppressorSilencer" count="5" />
+            <ingredient name="resourceAcid" count="3" />
+            <ingredient name="resourceMechanicalParts" count="5" />
+            <ingredient name="resourceForgedSteel" count="5" />
+        </recipe>
+
+        <recipe name="Railgun" count="1" craft_area="workbench" craft_time="240" tags="learnable,railgun">
+            <ingredient name="gunRifleT1HuntingRifleParts" count="40" />
+            <ingredient name="meleeWpnBatonT2StunBatonParts" count="25" />
+            <ingredient name="resourceForgedSteel" count="100" />
+            <ingredient name="resourceMechanicalParts" count="50" />
+            <ingredient name="resourceElectricParts" count="50" />
+        </recipe>
+        <recipe name="RailgunAmmo" count="1" craft_area="workbench" craft_time="10">
+            <ingredient name="ammoDartIron" count="4" />
+            <ingredient name="resourceForgedSteel" count="4" />
+        </recipe>
+
+
+    </append>
+</configs>

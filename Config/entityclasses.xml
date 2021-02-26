@@ -1,0 +1,539 @@
+<configs>
+
+	<append xpath="/entity_classes">
+
+		<entity_class name="SharkWFLB" extends="animalTemplateHostile">
+			<property name="Tags" value="entity,animal,zombie,hostile"/>
+			<property name="Class" value="EntityVulture"/>
+			<property name="EntityType" value="Zombie"/>
+			<property name="AvatarController" value="AvatarAnimalController"/>
+			<property name="ModelType" value="Standard"/>
+			<property name="HasRagdoll" value="true"/>
+			<property name="PhysicsBody" value="vulture"/>
+			<property name="Mass" value="100"/>
+			<property name="Mesh" value="Animals/Vulture/animalVultureStandardRagdoll"/>
+			<property name="SizeScale" value="1.6"/>
+		
+			<property name="AITask-1" value=""/>
+			<property name="AITarget-1" value=""/>
+		
+			<property name="SoundRandom" value="Sounds/Misc/underwater_lp"/>
+			<property name="SoundAlert" value="Sounds/Misc/underwater_lp"/>
+			<property name="SoundHurt" value="player2drownpain"/>
+			<property name="SoundDeath" value="player2drowndeath"/>
+			<property name="SoundAttack" value="Sounds/Misc/underwater_lp"/>
+			<property name="SoundSense" value="Sounds/Misc/underwater_lp"/>
+			<property name="SoundGiveUp" value="player2drownsurface"/>
+			<property name="ReplaceMaterial0" value="particleeffects/materials/waterfallslope"/>
+		
+			<!-- Stealth -->
+			<property name="SightRange" value="100"/>
+		
+			<!-- Gameplay -->
+			<property name="MoveSpeed" value="1.3"/>
+			<property name="MoveSpeedAggro" value="2.1, 2.1"/> <!-- Used when player in vehicle -->
+			<property name="MaxTurnSpeed" value="190"/>
+		
+			<property name="HandItem" value="meleeHandSharkWFLB"/>
+			<property name="Immunity" value="sickness;disease;wellness"/> <!-- bleeding; -->
+		
+			<property name="DismemberMultiplierLegs" value="0"/>
+			<property name="PainResistPerHit" value="-1"/> <!-- no pain -->
+		
+			<property name="ExperienceGain" value="900"/> <!-- XP strong -->
+			<property name="LootDropEntityClass" value="EntityLootContainerBoss"/>
+			<property name="LootDropProb" value="0.3"/>
+			<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
+			<drop event="Harvest" name="foodRawMeat" tag="butcherHarvest" count="80"/> <!-- animalBear -->
+			<drop event="Harvest" name="resourceLeather" tag="butcherHarvest" count="20"/>
+			<drop event="Harvest" name="resourceAnimalFat" tag="butcherHarvest" count="8"/>
+			<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="30"/>
+			<drop event="Harvest" name="resourceBone" tag="allToolsHarvest" count="8"/>
+			<drop event="Harvest" name="resourceTestosteroneExtract" tag="butcherHarvest" count="2"/>
+			<drop event="Harvest" name="foodRawMeat" count="1" tag="WasteTreasuresCompleteHarvest"/>
+			<drop event="Harvest" name="resourceLeather" count="1" tag="WasteTreasuresCompleteHarvest"/>
+			<drop event="Harvest" name="resourceBone" count="1" tag="WasteTreasuresCompleteHarvest"/>
+		
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="1800"/>
+				<passive_effect name="HealthMax" operation="perc_add" value="0"/> <!-- Animal HP scale -->
+				<passive_effect name="EntityDamage" operation="perc_add" value=".5"/> <!-- Feral damage -->
+				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="SharkWFLBDeco"/>		
+				<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>		
+				<triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="9"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+				<triggered_effect trigger="onSelfFirstSpawn" action="AttachPrefabToEntity"  local_offset="-,0.615,-0.15" local_rotation="-45,0,180" prefab="#Other/Items?Mods/Sides/side_attachment_laserPrefab.prefab" parent_transform="Spine1" />
+				<triggered_effect trigger="onSelfFirstSpawn" action="SetTransformActive" active="true"  parent_transform="Spine1" transform_path="lightSource"/>		
+			</effect_group>
+		</entity_class>
+		
+		<!--================================Templates=====================================-->
+
+		<entity_class name="jaeZombieUMA_Template" extends="zombieTemplateMale">
+			<property name="HideInSpawnMenu" value="true" />
+			<property name="EntityType" value="Zombie" />
+			<property name="Mesh" value="#Entities/Zombies?Zombies/zombieStandardBoeRagdoll.prefab" />
+			<property name="Prefab" value="NPC" />
+			<property name="Class" value="EntityZombie" />
+			<property name="Parent" value="Enemies" />
+			<property name="IsEnemyEntity" value="true" />
+			<property name="HandItem" value="meleeHandZombie01" />
+			<property name="SoundAlert" value="Enemies/Base_Zombie_Male/zombiemalealert" />
+			<property name="SoundSense" value="Enemies/Base_Zombie_Male/zombiemalesense" />
+			<property name="SoundHurt" value="Enemies/Base_Zombie_Male/zombiemalepain" />
+			<property name="SoundDeath" value="Enemies/Base_Zombie_Male/zombiemaledeath" />
+			<property name="SoundAttack" value="Enemies/Base_Zombie_Male/zombiemaleattack" />
+			<property name="DismemberMultiplierHead" value=".4" />
+			<property name="DismemberMultiplierArms" value=".4" />
+			<property name="DismemberMultiplierLegs" value=".4" />
+			<property name="PainResistPerHit" value=".5" />
+			<property name="AttackTimeoutDay" value="1.5" />
+			<property name="AttackTimeoutNight" value="1.1" />
+			<property name="WalkType" value="7" />
+			<property name="ModelType" value="ZombieUMA" />
+			<property name="RootMotion" value="true" />
+			<property name="HasRagdoll" value="true" />
+			<property name="AvatarController" value="AvatarZombie01Controller" />
+			<property name="PhysicsBody" value="zombieUMA" />
+			<property name="HasDeathAnim" value="false" />
+			<property name="TimeStayAfterDeath" value="150" />
+			<property name="DeadBodyHitPoints" value="350" />
+		</entity_class>
+
+		<entity_class name="jaeZombieBoss_Template" extends="zombieTemplateMale">
+			<property name="HideInSpawnMenu" value="true" />
+			<property name="DismemberMultiplierHead" value="0" />
+			<property name="DismemberMultiplierArms" value="0" />
+			<property name="DismemberMultiplierLegs" value="0" />
+			<property name="LegCrawlerThreshold" value="0" />
+			<property name="LegCrippleThreshold" value="0" />
+			<property name="KnockdownProneDamageThreshold" value="0" />
+			<property name="KnockdownKneelDamageThreshold" value="0" />
+			<property name="PainResistPerHit" value="1" />
+			<property name="AttackTimeoutDay" value="1.5" />
+			<property name="AttackTimeoutNight" value="1.1" />
+			<property name="JumpMaxDistance" value="1,2" />
+			<property name="MoveSpeedAggro" value=".5, 1.35" />
+			<property name="Mass" value="300" />
+			<property name="StompsSpikes" value="true" />
+			<property name="AITask-1" value="BreakBlock" />
+			<property name="AITask-2" value="RangedAttackTarget" data="itemType=1;cooldown=4;duration=5" />
+			<property name="AITask-3" value="ApproachAndAttackTarget" data="class=EntityNPC,0,EntityEnemyAnimal,0,EntityPlayer,0" />
+			<property name="AITask-4" value="ApproachSpot" />
+			<property name="AITask-5" value="Look" />
+			<property name="AITask-6" value="Wander" />
+			<property name="AITask-7" value="" />
+			<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher" />
+			<drop event="Harvest" name="foodRottingFlesh" tag="butcherHarvest" count="2" />
+			<drop event="Harvest" name="resourceAnimalFat" tag="butcherHarvest" count="1" />
+			<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="2" />
+			<drop event="Harvest" name="resourceBone" tag="allToolsHarvest" count="2" />
+			<!--<property name="LootListOnDeath" value="174"/>-->
+		</entity_class>
+
+		<entity_class name="jaeZombieUMABoss_Template" extends="jaeZombieUMA_Template">
+			<property name="HideInSpawnMenu" value="true" />
+			<property name="DismemberMultiplierHead" value="0" />
+			<property name="DismemberMultiplierArms" value="0" />
+			<property name="DismemberMultiplierLegs" value="0" />
+			<property name="LegCrawlerThreshold" value="0" />
+			<property name="LegCrippleThreshold" value="0" />
+			<property name="KnockdownProneDamageThreshold" value="0" />
+			<property name="KnockdownKneelDamageThreshold" value="0" />
+			<property name="PainResistPerHit" value="1" />
+			<property name="AttackTimeoutDay" value="1.5" />
+			<property name="AttackTimeoutNight" value="1.1" />
+			<property name="JumpMaxDistance" value="1,2" />
+			<property name="MoveSpeedAggro" value=".5, 1.35" />
+			<property name="Mass" value="300" />
+			<property name="StompsSpikes" value="true" />
+			<property name="AITask-1" value="BreakBlock" />
+			<property name="AITask-2" value="RangedAttackTarget" data="itemType=1;cooldown=4;duration=5" />
+			<property name="AITask-3" value="ApproachAndAttackTarget" data="class=EntityNPC,0,EntityEnemyAnimal,0,EntityPlayer,0" />
+			<property name="AITask-4" value="ApproachSpot" />
+			<property name="AITask-5" value="Look" />
+			<property name="AITask-6" value="Wander" />
+			<property name="AITask-7" value="" />
+			<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher" />
+			<drop event="Harvest" name="foodRottingFlesh" tag="butcherHarvest" count="2" />
+			<drop event="Harvest" name="resourceAnimalFat" tag="butcherHarvest" count="1" />
+			<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="2" />
+			<drop event="Harvest" name="resourceBone" tag="allToolsHarvest" count="2" />
+			<!--<property name="LootListOnDeath" value="174"/>-->
+		</entity_class>
+
+			<!--=====Use this for zombies with Deco items-->
+
+		<entity_class name="jae2Zombie_Template" extends="zombieTemplateMale">
+			<property name="HideInSpawnMenu" value="true"/>
+			<property name="EntityType" value="Zombie" />
+			<property name="Mesh" value="#Entities/Zombies?Zombies/zombieStandardBoeRagdoll.prefab" />
+			<property name="Prefab" value="NPC" />
+			<property name="Class" value="EntityZombie" />
+			<property name="Parent" value="Enemies" />
+			<property name="IsEnemyEntity" value="true" />
+			<property name="HandItem" value="meleeHandZombie01" />
+			<property name="SoundAlert" value="Enemies/Base_Zombie_Male/zombiemalealert" />
+			<property name="SoundSense" value="Enemies/Base_Zombie_Male/zombiemalesense" />
+			<property name="SoundHurt" value="Enemies/Base_Zombie_Male/zombiemalepain" />
+			<property name="SoundDeath" value="Enemies/Base_Zombie_Male/zombiemaledeath" />
+			<property name="SoundAttack" value="Enemies/Base_Zombie_Male/zombiemaleattack" />
+			<property name="DismemberMultiplierHead" value=".4"/>
+			<property name="DismemberMultiplierArms" value=".4"/>
+			<property name="DismemberMultiplierLegs" value=".4"/>
+			<property name="PainResistPerHit" value=".5"/>
+			<property name="AttackTimeoutDay" value="1.5" />
+			<property name="AttackTimeoutNight" value="1.1" />
+			<property name="WalkType" value="7" />
+			<property name="ModelType" value="ZombieUMA" />
+			<property name="RootMotion" value="true" />
+			<property name="HasRagdoll" value="true" />
+			<property name="AvatarController" value="AvatarZombie01Controller" />
+			<property name="PhysicsBody" value="zombieUMA" />
+			<property name="HasDeathAnim" value="false" />
+			<property name="TimeStayAfterDeath" value="150" />
+			<property name="DeadBodyHitPoints" value="350" />
+		</entity_class>
+
+		<!--===============================Original Zombies===============================-->
+
+
+		
+		<!--===============================Vehicles=======================================-->
+
+		<entity_class name="HellHound4x4">
+			<property name="Tags" value="vehicle,HellHound4x4" />
+			<property name="Class" value="EntityVJeep" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="5" />
+			<property name="Explosion.RadiusEntities" value="5" />
+			<property name="Explosion.BlockDamage" value="100" />
+			<property name="Explosion.EntityDamage" value="100" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+		<entity_class name="HellFire">
+			<property name="Tags" value="vehicle, HellFire" />
+			<property name="Class" value="EntityMotorcycle" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?motorcycle_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="78" /> <!--Motorcycle Storage-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="4" />
+			<property name="Explosion.RadiusEntities" value="4" />
+			<property name="Explosion.BlockDamage" value="50" />
+			<property name="Explosion.EntityDamage" value="50" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_motorcycle" />
+			<property name="NavObject" value="motorcycle" />
+		</entity_class>
+
+		<entity_class name="HellSpikey4x4">
+			<property name="Tags" value="vehicle,HellSpikey4x4" />
+			<property name="Class" value="EntityVJeep" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="5" />
+			<property name="Explosion.RadiusEntities" value="5" />
+			<property name="Explosion.BlockDamage" value="100" />
+			<property name="Explosion.EntityDamage" value="100" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+		<entity_class name="HellDog">
+			<property name="Tags" value="vehicle,HellDog" />
+			<property name="Class" value="EntityMotorcycle" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?motorcycle_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="78" /> <!--Motorcycle Storage-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="4" />
+			<property name="Explosion.RadiusEntities" value="4" />
+			<property name="Explosion.BlockDamage" value="50" />
+			<property name="Explosion.EntityDamage" value="50" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_motorcycle" />
+			<property name="NavObject" value="motorcycle" />
+		</entity_class>
+
+		<entity_class name="SharkBlimp">
+			<property name="Tags" value="vehicle,SharkBlimp" />
+			<property name="Class" value="EntityVBlimp" />
+			<property name="Parent" value="Cars" />
+			<property name="SizeScale" value="0.35" />
+			<property name="Prefab" value="#Entities/Vehicles?jokeblimp_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="77" /> <!--Minibike Storage-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="6" />
+			<property name="Explosion.RadiusEntities" value="6" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_minibike" />
+			<property name="NavObject" value="minibike" />
+		</entity_class>
+
+		<entity_class name="Whirligig">
+			<property name="Tags" value="vehicle,whirligig" />
+			<property name="Class" value="EntityVGyroCopter" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?gyrocopter_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="3" />
+			<property name="Explosion.RadiusEntities" value="3" />
+			<property name="Explosion.BlockDamage" value="30" />
+			<property name="Explosion.EntityDamage" value="30" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_gyrocopter" />
+			<property name="NavObject" value="gyrocopter" />
+		</entity_class>
+
+		<entity_class name="MagicBus">
+			<property name="Tags" value="vehicle,MagicBus" />
+			<property name="Class" value="EntityVJeep" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="5" />
+			<property name="Explosion.RadiusEntities" value="5" />
+			<property name="Explosion.BlockDamage" value="100" />
+			<property name="Explosion.EntityDamage" value="100" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+		<entity_class name="BattleBus">
+			<property name="Tags" value="vehicle,BattleBus" />
+			<property name="Class" value="EntityVJeep" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="5" />
+			<property name="Explosion.RadiusEntities" value="5" />
+			<property name="Explosion.BlockDamage" value="100" />
+			<property name="Explosion.EntityDamage" value="100" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+		<entity_class name="HellCar">
+			<property name="Tags" value="vehicle,HellCar" />
+			<property name="Class" value="EntityVJeep" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="5" />
+			<property name="Explosion.RadiusEntities" value="5" />
+			<property name="Explosion.BlockDamage" value="100" />
+			<property name="Explosion.EntityDamage" value="100" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+		<entity_class name="BathBlimp">
+			<property name="Tags" value="vehicle,BathBlimp" />
+			<property name="Class" value="EntityVBlimp" />
+			<property name="Parent" value="Cars" />
+			<property name="SizeScale" value=".4" />
+			<property name="Prefab" value="#Entities/Vehicles?jokeblimp_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="77" /> <!--Minibike Storage-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="6" />
+			<property name="Explosion.RadiusEntities" value="6" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_minibike" />
+			<property name="NavObject" value="minibike" />
+		</entity_class>
+
+		<entity_class name="BattleBusDrone">
+			<property name="Tags" value="vehicle,BattleBusDrone" />
+			<property name="Class" value="EntityVBlimp" />
+			<property name="Parent" value="Cars" />
+			<property name="SizeScale" value="1.3" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="6" />
+			<property name="Explosion.RadiusEntities" value="6" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+		<entity_class name="PeNa1979Express">
+			<property name="Tags" value="vehicle,PeNa1979Express" />
+			<property name="Class" value="EntityVBlimp" />
+			<property name="Parent" value="Cars" />
+			<property name="SizeScale" value="2" />
+			<property name="Prefab" value="#Entities/Vehicles?jokeblimp_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="6" />
+			<property name="Explosion.RadiusEntities" value="6" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_minibike" />
+			<property name="NavObject" value="minibike" />
+		</entity_class>
+
+		<entity_class name="PsyrenRide">
+			<property name="Tags" value="vehicle,PsyrenRide" />
+			<property name="Class" value="EntityVJeep" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="5" />
+			<property name="Explosion.RadiusEntities" value="5" />
+			<property name="Explosion.BlockDamage" value="100" />
+			<property name="Explosion.EntityDamage" value="100" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+		<entity_class name="GreenMax">
+			<property name="Tags" value="vehicle,GreenMax" />
+			<property name="Class" value="EntityVJeep" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="5" />
+			<property name="Explosion.RadiusEntities" value="5" />
+			<property name="Explosion.BlockDamage" value="100" />
+			<property name="Explosion.EntityDamage" value="100" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+		<entity_class name="RedMax">
+			<property name="Tags" value="vehicle,RedMax" />
+			<property name="Class" value="EntityVJeep" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" /> <!--4x4 Truck-->
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="5" />
+			<property name="Explosion.RadiusEntities" value="5" />
+			<property name="Explosion.BlockDamage" value="100" />
+			<property name="Explosion.EntityDamage" value="100" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+		<entity_class name="HellPiggy">
+			<property name="Tags" value="vehicle,HellPiggy" />
+			<property name="Class" value="EntityVJeep" />
+			<property name="Parent" value="Cars" />
+			<property name="Prefab" value="#Entities/Vehicles?jeep_Prefab.prefab" />
+			<property name="SizeScale" value=".4" />
+			<property name="ModelType" value="Standard" />
+			<property name="SurfaceCategory" value="metal" />
+			<property name="IgnoreTrigger" value="true" />
+			<property name="LootListAlive" value="79" />
+			<property name="IsEnemyEntity" value="false" />
+			<property name="Explosion.ParticleIndex" value="6" />
+			<property name="Explosion.RadiusBlocks" value="5" />
+			<property name="Explosion.RadiusEntities" value="5" />
+			<property name="Explosion.BlockDamage" value="100" />
+			<property name="Explosion.EntityDamage" value="100" />
+			<property name="RotateToGround" value="true" />
+			<property name="Faction" value="none" />
+			<property name="MapIcon" value="ui_game_symbol_4x4" />
+			<property name="NavObject" value="4x4" />
+		</entity_class>
+
+
+	</append>
+</configs>

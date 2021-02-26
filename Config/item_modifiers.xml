@@ -1,0 +1,74 @@
+<configs>
+
+    <append xpath="/item_modifiers">
+
+        <item_modifier name="Block Damage Plus Test" installable_tags="tool" modifier_tags="BlockDamage" blocked_tags="noMods" type="attachment">
+            <property name="UnlockedBy" value="Block Damage Plus Schematic" />
+            <property name="DescriptionKey" value="BlockDamagePlusDesc" />
+            <property name="Material" value="Msteel" />
+            <property name="CustomIcon" value="meleeToolRepairT0StoneAxe" />
+            <property name="CustomIconTint" value="00FFFF" />
+            <property name="Stacknumber" value="1" />
+            <property name="Group" value="Mods" />
+            <property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab" />
+
+            <effect_group tiered="false">
+                <passive_effect name="BlockDamage" operation="perc_add" value=".3" />
+            </effect_group>
+        </item_modifier>
+
+        <item_modifier name="modGunMeleeNiCdBattery" installable_tags="weapon,tool,armorHands" modifier_tags="specialDamage" blocked_tags="noMods" type="attachment">
+            <!-- <property name="UnlockedBy" value="modGunMeleeNiCdBatterySchematic"/> -->
+            <property name="Stacknumber" value="1" />
+            <property name="Group" value="Mods" />
+            <property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab" />
+
+            <!-- Changes damage type to electric -->
+            <item_property_overrides name="*">
+                <property name="DamageType" value="Electrical" />
+            </item_property_overrides>
+
+            <effect_group tiered="false">
+                <passive_effect name="BlockDamage" operation="perc_add" value=".4" />
+            </effect_group>
+            <property name="PickupJournalEntry" value="augmentGunsTip" />
+        </item_modifier>
+
+        <item_modifier name="Augur Chainsaw Silencer" installable_tags="motorTool" blocked_tags="noSilencer,flaredBarrel" modifier_tags="other" type="attachment">
+            <property name="Stacknumber" value="1" />
+            <property name="Group" value="Mods" />
+            <property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab" />
+            <property name="CustomIcon" value="modGunSoundSuppressorSilencer" />
+            <property name="CustomIconTint" value="000000" />
+
+            <item_property_overrides name="*">
+                <property name="Sound_start" value="" />
+                <property name="Sound_end" value="" />
+            </item_property_overrides>
+
+            <effect_group tiered="false">
+                <passive_effect name="EntityDamage" operation="perc_add" value=".1">
+                    <requirement name="ProgressionLevel" progression_name="perkUrbanCombatComplete" operation="Equals" value="1" />
+                </passive_effect>
+
+                <passive_effect name="EntityDamage" operation="perc_add" value="-.15">
+                    <requirement name="RandomRoll" seed_type="Item" min_max="1,100" operation="LTE" value="80" />
+                </passive_effect>
+                <passive_effect name="DamageFalloffRange" operation="perc_add" value="-.25">
+                    <requirement name="RandomRoll" seed_type="Item" min_max="1,100" operation="LTE" value="80" />
+                </passive_effect>
+                <passive_effect name="MaxRange" operation="perc_add" value="-.25">
+                    <requirement name="RandomRoll" seed_type="Item" min_max="1,100" operation="LTE" value="80" />
+                </passive_effect>
+
+                <triggered_effect trigger="onSelfHoldingItemCreated" action="AttachPrefabToHeldItem" prefab="#Other/Items?Mods/Barrels/SilencerPrefab.prefab" parent_transform="Attachments/Barrel">
+                    <requirement name="HoldingItemHasTags" tags="doubleBarrel" invert="true" />
+                </triggered_effect>
+
+
+            </effect_group>
+
+        </item_modifier>
+
+    </append>
+</configs>

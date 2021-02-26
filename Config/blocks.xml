@@ -1,0 +1,27 @@
+<configs>
+
+<append xpath="/blocks/block[@name='cntCoolerClosed']"> 
+    <property name="EconomicValue" value="20" /> 
+</append>
+
+<append xpath="/blocks/block[@name='stalactite01']">
+    <property name="EconomicValue" value="20" />
+</append>
+
+<!--<set xpath="/blocks/block[@name='cntCoolerRandomLootHelper']/property[name='EconomicValue']/@value">20</set>-->
+
+<append xpath="/blocks">
+
+<block name="jaeDecoVendingMachine">
+	<property name="Extends" value="cntVendingMachine2Broken"/>
+	<property name="CustomIcon" value="cntVendingMachine2Broken"/>
+    <property name="DescriptionKey" value="jaeDecoVendingMachineDesc" />
+	<property name="CreativeMode" value="Dev"/>
+	<property name="Model" value="Entities/Crafting/vending_machinePrefab"/>
+	<property name="Class" value="VendingMachine"/>
+	<property name="TraderID" value="9"/>
+</block>
+
+</append>
+
+</configs>
