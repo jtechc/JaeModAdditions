@@ -197,7 +197,53 @@
 
 		<!--===============================Original Zombies===============================-->
 
+		<entity_class name="animalChickenRockets" extends="animalTemplateHostile">
+			<property name="Tags" value="entity,animal,hostile,perkAT01,perkAT02,perkAT03"/>
+			<property name="MapIcon" value="ui_game_symbol_tracking_chicken"/>
+			<property name="TrackerIcon" value="ui_game_symbol_tracking_chicken"/>
+			<property name="Mesh" value="Animals/CHICKEN/chickenPrefab"/>
+			<property name="Prefab" value="NPC"/>
+			<property name="Class" value="EntityEnemyAnimal"/>
+			<property name="Parent" value="Animals"/>
+			<property name="Faction" value="animals"/>
+			<property name="PhysicsBody" value="chicken"/>
+			<property name="Mass" value="15"/>
+			<property name="Weight" value="10"/>
+			<property name="SoundHurt" value="Animals/Chicken/chickenpain"/>
+			<property name="SoundDeath" value="Animals/Chicken/chickendeath"/>
+			<property name="SwimOffset" value="2"/>
+			<property name="HasRagdoll" value="false"/>
+			<property name="HasDeathAnim" value="false"/>
+			<property name="AITask-1" value="RangedAttackTarget" data="itemType=1;cooldown=3;duration=4;minRange=3;maxRange=300" />
+			<property name="AITask-2" value="ApproachAndAttackTarget" data="class=EntityEnemyAnimal,0,EntityPlayer" />
+			<property name="AITask-3" value="BreakBlock" />
+			<property name="AITask-4" value="ApproachSpot" />
+			<property name="AITask-5" value="Look" />
+			<property name="AITask-6" value="Wander" />
+			<property name="AITask-7" value="" />
+			<property name="HandItem" value="meleeHandChickenRockets" />
+			<property name="MoveSpeed" value="1.8" />
+			<property name="MoveSpeedAggro" value="2, 3" />
 
+			<!-- Gameplay -->
+			<property name="ExperienceGain" value="130"/>
+			<property name="DeadBodyHitPoints" value="175"/>
+			<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
+			<drop event="Harvest" name="foodRawMeat" tag="butcherHarvest" count="10"/> <!-- animalChicken -->
+			<drop event="Harvest" name="resourceFeather" tag="butcherHarvest" count="23"/>
+			<drop event="Harvest" name="resourceBone" tag="butcherHarvest" count="4"/>
+			<drop event="Harvest" name="resourceBone" tag="allToolsHarvest" count="2"/>
+			<drop event="Harvest" name="foodRawMeat" count="1" tag="WasteTreasuresCompleteHarvest"/>
+			<drop event="Harvest" name="resourceLeather" count="1" tag="WasteTreasuresCompleteHarvest"/>
+			<drop event="Harvest" name="resourceBone" count="1" tag="WasteTreasuresCompleteHarvest"/>
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="1000"/>
+				<passive_effect name="HealthMax" operation="perc_add" value="0"/> <!-- Animal HP scale -->
+			</effect_group>
+		
+			<property name="NavObject" value="animaltracking_chicken" />
+		</entity_class>
+		
 		
 		<!--===============================Vehicles=======================================-->
 

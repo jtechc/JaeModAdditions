@@ -343,7 +343,7 @@
         </item>
 
         <item name="jaeTunnelAmmo">
-            <property name="CreativeMode" value="Dev" />
+            <property name="CreativeMode" value="None" />
             <property name="Tags" value="ammo" />
             <property name="DisplayType" value="ammoJunkTurretRegular" />
             <property name="HoldType" value="45" />
@@ -371,7 +371,7 @@
         </item>
 
         <item name="jaeSpeedAmmo">
-            <property name="CreativeMode" value="Dev" />
+            <property name="CreativeMode" value="None" />
             <property name="Tags" value="ammo" />
             <property name="DisplayType" value="ammoJunkTurretRegular" />
             <property name="HoldType" value="45" />
@@ -1257,6 +1257,83 @@
             </effect_group>
         </item>
 
+		<item name="meleeHandChickenRockets">
+			<property name="Extends" value="meleeHandMaster"/>
+			<property name="CreativeMode" value="None"/>
+			<property name="Degradation" value="99999" param1="true"/>
+			<property class="Action0">
+				<property name="Range" value="1.75"/>
+				<property name="DamageEntity" value="75"/>
+				<property name="DamageBlock" value="500"/>
+				<property name="Sound_start" value="Animals/Chicken/chickenpain"/>
+				<property class="HitSounds">
+					<property name="Override0" value="organic" param1="metalsolidhitorganic"/></property>
+			</property>
+			<property class="Action1">
+				<property name="Class" value="Vomit"/>
+				<property name="Delay" value=".3"/>
+				<property name="Range" value="500"/>
+				<property name="Infinite_ammo" value="true"/>
+				<property name="Magazine_items" value="ChickenRocketsProjectile"/>
+				<property name="Sound_warning" value="zombiefemalescoutalert"/>
+				<property name="Sound_start" value="m136_fire"/>
+				<property name="Sound_repeat" value=""/>
+				<property name="Sound_end" value=""/>
+				<property name="Sound_empty" value=""/>
+				<property name="Sound_reload" value=""/></property>
+			<effect_group name="meleeHandJuggernaut" tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="0"/>
+				<passive_effect name="DamageFalloffRange" operation="base_set" value="50"/>
+				<passive_effect name="MaxRange" operation="base_set" value="100"/>
+				<passive_effect name="MagazineSize" operation="base_set" value="3"/>
+				<passive_effect name="BurstRoundCount" operation="base_set" value="3"/>
+				<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1"/>
+				<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="3"/>
+				<passive_effect name="SpreadMultiplierIdle" operation="base_set" value="1"/>
+				<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+			buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo,exhausted,breakedarmor"
+			weights=".21,.17,.17,.15,.39,.46,.21,.21,.21"/>
+		<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="15">
+			<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+		<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="2400"/>
+				<passive_effect name="TargetArmor" operation="perc_add" value="-.3"/>
+				<triggered_effect trigger="onSelfDamagedOther" action="ModifyCVar" target="other" cvar="infectionZombieHit" operation="set" value="30"/>
+			</effect_group>
+			<effect_group name="Boss pushback / knockdown">
+				<requirement name="!EntityTagCompare" target="other" tags="trader"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="40"/>
+					<triggered_effect trigger="onSelfAttackedOther" action="Ragdoll" target="other" duration=".2" force="150"/>
+			</effect_group>
+		</item>
+		<item name="ChickenRocketsProjectile">
+			<property name="Meshfile" value="#Other/Items?Weapons/Ranged/RocketLauncher/rocketPrefab.prefab"/>
+			<property name="Material" value="Mmetal"/>
+			<property name="CreativeMode" value="None"/>
+			<property class="Action1">
+				<property name="Class" value="Projectile"/>
+				<property name="DamageEntity" value="125"/>
+				<property name="DamageBlock" value="1000"/>
+				<property name="Explosion.ParticleIndex" value="5"/>
+				<!-- which Prefab/particle is used -->
+				<property name="Explosion.RadiusBlocks" value="5"/>
+				<!-- damage radius for blocks -->
+				<property name="Explosion.RadiusEntities" value="4"/>
+				<!-- damage radius for entities -->
+				<property name="Explosion.DamageBonus.water" value="0"/>
+				<property name="Velocity" value="18"/>
+				<property name="FlyTime" value="2"/>
+				<property name="LifeTime" value="4"/>
+				<property name="CollisionRadius" value="0.75"/>
+				<property name="DamageBonus.earth" value="0"/></property>
+			<effect_group name="JuggernautProjectile" tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="0"/>
+				<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth"/>
+				<passive_effect name="DamageModifier" operation="perc_set" value="0.5" tags="stone"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="1.2" tags="metal"/>
+			</effect_group>
+		</item>
+
+        
     </append>
 
 
