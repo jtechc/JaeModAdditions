@@ -1,5 +1,11 @@
 <configs>
 
+    <!--<set xpath="/recipes/recipe[@name='farmPlotBlockPlayer']/effect_group/passive_effect"-->
+
+        <append xpath="/recipes/recipe[@name='farmPlotBlockPlayer']/effect_group">
+            <passive_effect name="CraftingIngredientCount" level="4" operation="perc_add" value="-.5" tags="foodRottingFlesh,resourcePotassiumNitratePowder,resourceClayLump" />
+        </append>
+
     <append xpath="/recipes">
 
         <recipe name="jaeSpeedDigger" count="1" craft_area="VIP_Workstation">
