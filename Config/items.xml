@@ -1305,7 +1305,103 @@
             </effect_group>
         </item>
         
-
+        <item name="Obsidian Sledgehammer Test"><!--Element appended by: "Custom Items"-->
+            <property name="DescriptionKey" value="ObsidianItemsDesc" />
+            <property name="Tags" value="blunt,melee,grunting,heavy,sledge,weapon,longShaft,meleeWeapon,attStrength,perkSkullCrusher,canHaveCosmetic" />
+            <property name="DisplayType" value="melee" />
+            <property name="HoldType" value="33" />
+            <property name="Meshfile" value="#Other/Items?Weapons/Melee/SledgeHammer/steelSledgeHammerPrefab.prefab" />
+            <property name="CustomIcon" value="meleeWpnSledgeT3SteelSledgehammer" />
+            <property name="CustomIconTint" value="353535" />
+            <property name="TintColor" value="09,09,09" />
+            <property name="Material" value="Mdiamond" /> <property name="Weight" value="4" />
+            <property name="RepairTools" value="ObsidianRepairKit" />
+            <property name="DegradationBreaksAfter" value="false" />
+            <property name="SoundJammed" value="ItemNeedsRepair" />
+            <property name="SoundDestroy" value="metaldestroy1" />
+            <property name="FuelValue" value="250" />
+            <property name="EconomicValue" value="700" />
+            <property name="Group" value="Ammo/Weapons" />
+            <property name="UnlockedBy" value="Obsidian Sledgehammer Schematic" />
+            <property name="ShowQuality" value="true" />
+        
+            <property class="Action0">
+                <property name="Class" value="DynamicMelee" />
+                <property name="Sphere" value=".15" />   <!-- limit to 0.15, else the sphere cast can overlap the target already -->
+                <property name="Sound_start" value="sledge_swinglight" />
+                <property name="ToolCategory.harvestingTools" value=".5" param1="1" />
+        
+                <property name="UseGrazingHits" value="true" />
+                <property name="GrazeStart" value=".515" />
+                <property name="GrazeEnd" value=".52" />
+                <property name="SwingDegrees" value="65" />
+                <property name="SwingAngle" value="160" />
+            <property class="HitSounds">
+              <property name="Override0" value="organic" param1="metalsolidhitorganic" />
+            </property>
+            <property class="GrazeSounds">
+              <property name="Override0" value="organic" param1="metalgrazeorganic" />
+            </property>
+          </property>
+            <property class="Action1">
+                <property name="Class" value="DynamicMelee" />
+                <property name="Sphere" value=".15" />   <!-- limit to 0.15, else the sphere cast can overlap the target already -->
+                <property name="Sound_start" value="sledge_swingheavy" />
+                <property name="ToolCategory.harvestingTools" value=".5" param1="1" />
+                <property name="UsePowerAttackAnimation" value="true" />
+        
+                <property name="UseGrazingHits" value="true" />
+                <property name="GrazeStart" value=".515" />
+                <property name="GrazeEnd" value=".52" />
+                <property name="SwingDegrees" value="110" />
+                <property name="SwingAngle" value="90" />
+            <property class="HitSounds">
+              <property name="Override0" value="organic" param1="metalsolidhitorganic" />
+            </property>
+            <property class="GrazeSounds">
+              <property name="Override0" value="organic" param1="metalgrazeorganic" />
+            </property>
+          </property>
+            <effect_group name="Obsidian Sledgehammer">
+                <passive_effect name="MaxRange" operation="base_set" value="2.6" />
+                <passive_effect name="BlockRange" operation="base_set" value="3.5" />
+                <passive_effect name="EntityDamage" operation="base_set" value="85" tags="perkSkullCrusher" /> <!-- meleeWpnSledgeT3SteelSledgehammer -->
+                <passive_effect name="EntityDamage" operation="perc_add" value="-.15,.15" tags="perkSkullCrusher" /> <!-- random rng -->
+                <passive_effect name="EntityDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkSkullCrusher" /> <!-- tier bonus -->
+        
+                <passive_effect name="BlockDamage" operation="base_set" value="135" tags="perkSkullCrusher" />
+                <passive_effect name="BlockDamage" operation="perc_add" value="-.15,.15" tags="perkSkullCrusher" /> <!-- random BlockDmg -->
+                <passive_effect name="BlockDamage" operation="perc_add" value=".1,.5" tier="2,6" tags="perkSkullCrusher" /> <!-- tier bonus -->
+        
+                <passive_effect name="AttacksPerMinute" operation="base_set" value="44" />
+                <passive_effect name="StaminaLoss" operation="base_set" value="27.6" tags="primary" />
+                <passive_effect name="DegradationMax" operation="base_set" value="4000,8000" tier="1,6" tags="perkSkullCrusher" />
+                <passive_effect name="DegradationPerUse" operation="base_set" value="10" tags="perkSkullCrusher" />
+                <passive_effect name="ModSlots" operation="base_set" value="1,1,1,1,1,1" tier="1,2,3,4,5,6" />
+                <passive_effect name="ModSlots" operation="perc_add" value="-1,2" tier="1" />
+                <passive_effect name="ModSlots" operation="perc_add" value="0,3" tier="2" />
+                <passive_effect name="ModSlots" operation="perc_add" value="1,4" tier="3" />
+                <passive_effect name="ModSlots" operation="perc_add" value="2,5" tier="4" />
+                <passive_effect name="ModSlots" operation="perc_add" value="3,6" tier="5" />
+                <passive_effect name="ModSlots" operation="perc_add" value="4,6" tier="6" />
+                <passive_effect name="DegradationMax" operation="perc_add" value="-.15,.15" />
+                <passive_effect name="ModPowerBonus" operation="perc_add" value=".10" tags="EntityDamage,BlockDamage" />
+                <passive_effect name="ModPowerBonus" operation="base_add" value="200" tags="EconomicValue" />
+                <passive_effect name="DismemberChance" operation="base_add" value=".1" tags="primary" />
+        
+                <passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allHarvest" />
+                <passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="allToolsHarvest" />
+                <passive_effect name="HarvestCount" operation="base_add" value="-.75" tags="oreWoodHarvest" />
+            </effect_group>
+            <effect_group name="Power Attack">
+                <passive_effect name="EntityDamage" operation="perc_add" value="1.25" tags="secondary" />
+                <passive_effect name="BlockDamage" operation="perc_add" value="1.25" tags="secondary" />
+                <passive_effect name="StaminaLoss" operation="base_add" value="55.2" tags="secondary" />
+                <passive_effect name="DismemberChance" operation="base_add" value=".5" tags="secondary" />
+            </effect_group>
+        </item>
+        
+        
         <!--===============================Vehicles===============================-->
 
         <item name="HellHound4x4">
