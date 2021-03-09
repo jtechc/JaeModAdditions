@@ -1407,6 +1407,7 @@
             <property name="DisplayType" value="waterMegaCrush" />
             <property name="CustomIcon" value="drinkCanMegaCrush" />
             <property name="CustomIconTint" value="FF0000" />
+            <property name="TintColor" value="09,09,09" />
             <property name="EconomicValue" value="240" />
             <property class="Action0">
             </property>
